@@ -1,33 +1,25 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { useState } from 'react'
-import { RadioGroup } from '@headlessui/react'
-import { Drip } from '../../../../DeBelgLocalForkDripJSSDK/drips-js-sdk/src/subgraph';
+import { SetStateAction, useState } from 'react'
 
 
-let dripsamount:any = 0;
-
-const daiOptions = [
-
-  { amount: 16},
-  { amount: 32},
-  { amount: 64},
-
-]
-
-function handleSubmit(){
-
-  dripsamount  = ""
 
 
-}
-function classNames(...classes:any) {
-  return classes.filter(Boolean).join(' ')
-}
 
-export default function Dripsmount() {
-  const [dai, setDai] = useState(daiOptions[2])
+export default function DripAmountFunction(props:any) {
+  
 
- 
+  const [dripsamount, setdripsamount] = useState('');
+
+
+  const UpdateDrips:any = (event: { target: { value: SetStateAction<any>; }; }) => {
+    setdripsamount(event.target.value)
+  
+    props.dripsamount({dripsamount})
+
+    }
+
+
+
 
   return (
    
@@ -39,50 +31,35 @@ export default function Dripsmount() {
         </h2>
         </div>
       <div className= " border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
-      <label htmlFor="amount" className="block text-xs font-medium text-gray-900">
-        Custom amount in DAI
+      <label htmlFor="number" className="block text-xs font-medium text-gray-900">
+         Amount in DAI
       </label>
-      <form onChange={handleSubmit}>
-      <input
-        type="number"
+      <form >
+      <input  onChange={UpdateDrips}
+        
+         type="text"
+         name="price"
+         id="price"
+         placeholder="10"
     
-        name="customnumber"
-        id="dripsamount"
         className="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
-        placeholder="10"
+       
       />  </form>
     </div>
-      <RadioGroup value={dai} onChange={setDai} className="mt-2">
-        <RadioGroup.Label className="sr-only">Choose a drips option</RadioGroup.Label>
-        <div className="grid grid-cols-3 gap-3">
-          {daiOptions.map((option) => (
-            <RadioGroup.Option
-              key={option.amount}
-              value={option}
-              className={({ active, checked }) =>
-                classNames(
-                   
-                  active ? 'ring-2 ring-offset-2 ring-indigo-500' : '',
-                  checked
-                    ? 'bg-indigo-600 border-transparent text-white hover:bg-indigo-700'
-                    : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-50',
-                  'border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1'
-                )
-              }
- 
-            >
-              <RadioGroup.Label>{option.amount} DAI</RadioGroup.Label>
-            </RadioGroup.Option>
-          ))}
-        </div>
-      </RadioGroup>
+  
+
 
       <div className="flex items-center justify-between">
 
 <a href="https://docs.drips.network/" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
   See drips docs
 </a>
+<div>
+<button> {dripsamount} </button>
+
+</div> 
 </div>
     </div>
   )
 }
+

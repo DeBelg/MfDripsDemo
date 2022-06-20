@@ -102,12 +102,18 @@ let dripsClient: DripsClient;
     
     return (
       <div> 
-       <div className='grid grid-cols-2 gap-4'>
+       <div className='grid grid-cols-3 gap-4'>
+       <a  className="grid  items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md 
+              text-white bg-indigo-600 hover:bg-indigo-700"> <button onClick={approveDAIContract}> Approve Dai</button> </a> 
+
+
         <a className="grid gap items-center justify-center px-6 py-3 margin-left:5px border border-transparent text-base font-medium rounded-md 
               text-white bg-indigo-600 hover:bg-indigo-700"> <button onClick={connectWallet}>Connect Wallet</button> </a> 
 
         <a  className="grid  items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md 
               text-white bg-indigo-600 hover:bg-indigo-700"> <button onClick={approveDAIContract}> Approve Dai</button> </a> 
+
+
 </div>
 
  

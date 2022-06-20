@@ -1,13 +1,13 @@
-import logo from './logo.svg';
+
 import ContributorGrid from './pages/contributors';
 import './App.css';
 import DripsSelection from './pages/dripamount';
-import FundWallet from './pages/fundwallet';
 import { DripsClient, SubgraphClient } from 'drips-sdk'
 import { ContractReceipt, providers, type ContractTransaction } from 'ethers'
-import SendDrips from './pages/senddrips';
-import UserWalletDripsInfo from './pages/userwalletinfo';
 import Connect from './pages/walletv2';
+
+
+
 
 let dripsClient: DripsClient;
 let subgraphClient: SubgraphClient;
@@ -33,25 +33,21 @@ function App() {
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md min-width 
               text-indigo-700 bg-indigo-100 hover:bg-indigo-200" >
                Guide to build this demo
+  
             </a>
             
           </div>
          
         
-        <div className='mt-8 flex justify-center px-6 py-3' > 
-      <DripsSelection /> </div>
+        
       </div>
       
-      <div className='=mt-8 flex justify-center px-6 py-3'>
-      <ContributorGrid />
-        </div>
-       
-        <div> </div>
+   
+  
 
    
-    <div className='mt-8 flex justify-center'> <Connect/>  </div>
-    <div className='mt-8 flex justify-center'><SendDrips/> </div>
-    <div className='mt-8 flex justify-center'><UserWalletDripsInfo/> </div>
+    <div className='=mt-8 flex justify-center px-6 py-3'> <Connect/>  </div>
+
 
 
     </div>

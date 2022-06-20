@@ -5,11 +5,13 @@ import { type SubgraphClient,Split, toDAI, DripsConfig, DripsClient } from "drip
 export let dripsClient: DripsClient;
 export let subgraphClient: SubgraphClient;
 
+
 let userDrips: DripsConfig;
 let updating = false;
 let userSplits: Split[];
 
 export async function refresh() {
+  dripsClient.connect()
   updating = true;
   userDrips = await subgraphClient.getDripsBySender(dripsClient.address)
   userSplits = await subgraphClient.getSplitsBySender(dripsClient.address.toLowerCase())
@@ -19,7 +21,7 @@ export async function refresh() {
 
 export default class UserWalletDripsInfo extends Component {
 
-  
+ 
   render() {
     return (
   <div>
@@ -29,6 +31,7 @@ export default class UserWalletDripsInfo extends Component {
       <h3>Splits</h3>
 <div>{ userSplits ? JSON.stringify(userSplits, null, 2) : '...' }</div>
    
+
    </div>
     )
   }

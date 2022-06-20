@@ -12,10 +12,11 @@ const contributors= [
   
     {
       name: 'Eda',
-      wallet: 'sha.eth',
+      wallet: 'genlyai.eth',
       role: 'DevRel @heliumfndn',
       imageUrl:
         'https://pbs.twimg.com/profile_images/1451891033504165889/30Q6K4eK_400x400.jpg',
+      classnameonselected: "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
     },
   
     {
@@ -47,7 +48,7 @@ const contributors= [
       wallet: 'rahat.eth',
       role: 'DevRel @edgeandnode @graphprotocol @radicle',
       imageUrl:
-        'https://pbs.twimg.com/profile_images/1531616379585142784/c2RQ5uSO_400x400.jpg',
+        'https://pbs.twimg.com/profile_images/1536380006791798786/Gn2uZUoq_400x400.jpg',
     },
 
 
@@ -57,35 +58,47 @@ const contributors= [
 
   export default function ContributorGrid() {
 
-    const [selected, setSelected] = useState(false); // Added state
+    const [selected, setSelected] = useState(Boolean); // Added state
+  
+    const [selectedcontributor, setSelectedcontributor] = useState("")
+
 
    
-    const handleClick = () => {
-      setSelected(!selected);
-    };
+ 
+//need help figuring out how to have them selected
+
 
    
 
     return (
       
       <div   className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      
         {contributors.map((person) => (
-          <div onClick={()=>console.log([person.wallet])}
+          <div 
+         
+          onClick={()=> setSelectedcontributor((person.wallet))}
+         
             key={person.wallet}
             className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
           >
+           
             <div className="flex-shrink-0">
               <img className="h-10 w-10 rounded-full" src={person.imageUrl} alt="" />
             </div>
             <div className="flex-1 min-w-0">
               <a href="#" className="focus:outline-none">
                 <span className="absolute inset-0" aria-hidden="true" />
-                <p className="text-sm font-medium text-gray-900">{person.name}</p>
+                <p  className="text-sm font-medium text-gray-900">{person.name}</p>
                 <p className="text-sm text-gray-500 truncate">{person.role}</p>
               </a>
             </div>
+            
           </div>
+          
         ))}
+<div> Send contributor {[selectedcontributor]}</div>
+
       </div>
     )
   }
