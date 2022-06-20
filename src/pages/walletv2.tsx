@@ -328,7 +328,7 @@ console.log(amt)
       <form >
       <input  onChange={UpdateDrips}
         
-         type="text"
+         type="number"
          name="price"
          id="price"
          placeholder="10"
